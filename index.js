@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
 const sls = require("serverless-http");
+const {ErrorMiddleware} = require("./middlewares/Error");
 
 
 
@@ -35,7 +36,7 @@ const route = require("./routes/route");
 app.use("/backend/api/v1", route);
 
 module.exports.handler = sls(app);
-
+app.use(ErrorMiddleware);
 //start serve
 app.listen(PORT, () =>{
     console.log(`Server started Successfully at ${PORT}`);
