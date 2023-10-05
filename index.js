@@ -15,6 +15,7 @@ app.use(
     cors({
         origin: [
             "http://localhost:3000",
+            "https://beuaty-app.vercel.app"
           ],
           credentials: true,
     })
